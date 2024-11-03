@@ -1,0 +1,495 @@
+
+# 2024-10-27 20:20:32.083951
++y
+
+# 2024-10-27 20:20:36.523835
++the mission is going to be  very high level, and not in the format that you gave an example of.  show me what we can do to change the mission.md into the starting point, such as "typical ecommerce shopping cart".  
++
++we need to add llm, which we will choose this exact python code:
++```
++import ollama
++response = ollama.generate(model='llama3.2', prompt=prompt)        
++summary = response['response']
++```
++that way we can use llm natural language to go from each step.
++
++also, the current code, it has the exact same info in mission.md, stories.md, dsl.md etc.  we need to have the progressive value add that language llm models bring for each step or they are redundant.
++
++also, instead of having dsl folder and a stories folder and a mission folder.  just have one folder called launchpad, and put all those files in one place, with the exception that /features folder still gets the features.
++
++also, name each file to start with the type, like dsl.somename.yaml (and it ends in .yaml so my ide will show colors, and starts with dsl.something so that multiples of those files stay together. ). same with mission.md, just call it mission.md and it will be obvious.  and stories.yaml and pipeline.log and tracibility.json etc are all self evident.
+
+# 2024-10-27 20:20:56.320969
++/ls
+
+# 2024-10-27 20:20:59.668711
++/git add .
+
+# 2024-10-27 20:21:05.178666
++try again
+
+# 2024-10-27 20:21:15.665704
++A
+
+# 2024-10-27 20:23:59.983611
++i've updated to be a one sentence, much much higher level.  now add ollama.generate type calls i discussed, to convert the mission.md into the meaningful stories
+
+# 2024-10-27 21:45:51.629269
++/ls
+
+# 2024-10-27 21:46:00.531417
++/drop *
+
+# 2024-10-27 21:46:03.482166
++/ls
+
+# 2024-10-27 21:46:14.863897
++/git add .
+
+# 2024-10-27 21:46:16.118652
++/ls
+
+# 2024-10-27 21:46:20.879727
++/add launch2.py
+
+# 2024-10-27 21:46:40.019779
++/add projects/ecommerce/launchpad/story.yaml
+
+# 2024-10-27 21:47:33.329130
++please fix so that we stop dumping "- !!python/object" in any file, especially story.yaml     
+
+# 2024-10-27 21:47:43.695260
++n
+
+# 2024-10-27 21:48:52.599507
++i don't want order_management folder and launch.py.  i asked for launch2.py to be fixed, and the output from ecommerce/launchpad/story.yaml
+
+# 2024-10-27 21:49:53.664363
++n
+
+# 2024-10-27 21:51:38.689617
++listen, you don't fix story.yaml by editing like you just did.  you fix it by fixing launch2.py because that is what generates it each time.  and i already have ollama installed as a package.  finally, and fix this, we are using llama3.2 (NOT llama2).  please don't revert my llm model backwards nor change it unless i specify.  tell me if somewhere has speicified that old version and we will erase that old version instruction
+
+# 2024-10-27 21:55:58.448930
++you failed.  i don't know why you can't just write plain ,clean yaml out for the story.yaml   is it really that hard to NOT write "!!python/object:__main__.Story" and NO T write "!!python/object:__main__.WorkflowStep"
+
+# 2024-10-27 21:58:12.983947
++"""
+
+# 2024-10-27 21:58:17.495732
++{
+
+# 2024-10-27 21:58:52.666617
++now examine your prompt to either write the gherkin stories or how you extract them.  we're getting a lot of verbiage saying 'here are some examples...'
+
+# 2024-10-27 21:59:05.895413
++and then it puts each gherkin story output like:
+
+# 2024-10-27 21:59:08.567197
++Here's an example of how you can convert the given user story into Gherkin scenarios:
++
++**Feature File:** `example_workflow.feature`
++
++```gherkin
++Feature: Example Workflow
++
++  Scenario: Customer initiates a workflow with valid input
++    Given I am a customer with valid cre
+
+# 2024-10-27 21:59:10.225065
++...
+
+# 2024-10-27 21:59:12.299980
++```
+
+# 2024-10-27 21:59:25.625484
++with the triple ticks before and after, insead of the stories...
+
+# 2024-10-27 21:59:26.379330
++}
+
+# 2024-10-27 22:04:03.667891
++rearchitect so that the ollama call can be any of these llms: openai, anthropic claude, or ollama   i think it needs to be easy to try different llms.  assume openai is 4o model, and claude is sonnet 3.5 and ollama is llama3.2  use my environmental variable when you need an api key for openai or claude. the keys are OPENAI_API_KEY and ANTHROPIC_API_KEY
+
+# 2024-10-27 22:05:41.612417
++y
+
+# 2024-10-27 22:05:51.490896
++n
+
+# 2024-10-27 22:09:44.436243
++your method of calling openai seems outdated.  here's the warining / error: aider) ➜  missionflow git:(main) ✗ python launch2.py
++Pipeline failed: 
++
++You tried to access openai.ChatCompletion, but this is no longer supported in openai>=1.0.0 - see the README at https://github.com/openai/openai-python for the API.
++
++You can run `openai migrate` to automatically upgrade your codebase to use the 1.0.0 interface. 
++
++Alternatively, you can pin your installation to the old version, e.g. `pip install openai==0.28`
++
++A detailed migration guide is available here: https://github.com/openai/openai-python/discussions/742
+
+# 2024-10-27 22:09:50.053047
++y
+
+# 2024-10-27 22:10:44.632517
++n
+
+# 2024-10-27 22:14:35.184867
++you need to output the prompts so i can trace it.  put the full prompt in pipeline.log as well.  
+
+# 2024-10-27 22:14:54.283212
++n
+
+# 2024-10-27 22:19:26.681939
++go read projects/ecommerce/pipeline.log and see the llm respons that starts here "2024-10-27 22:15:12,255 - INFO - LLM Response:".  you will find that it returns multiple perfect WorkFlow but the story.yaml didn't recieve them
+
+# 2024-10-27 22:19:57.182799
++n
+
+# 2024-10-27 22:26:02.993242
++the Features are being written all to the same file.  I don't think Gherkin allows that.
+
+# 2024-10-27 22:26:46.093116
++n
+
+# 2024-10-27 22:27:07.697740
++/run launch2.py
+
+# 2024-10-27 22:27:14.398741
++n
+
+# 2024-10-27 22:27:33.735464
++/run python launch2.py
+
+# 2024-10-27 22:28:41.412064
++y
+
+# 2024-10-27 22:29:13.500830
++n
+
+# 2024-10-27 22:30:59.355308
++/run python launch2.py
+
+# 2024-10-27 22:32:06.933447
++y
+
+# 2024-10-27 22:32:22.246083
++/run ls -l projects/ecommerce/launchpad/
+
+# 2024-10-27 22:32:22.518451
++/run ls -l projects/ecommerce/features/
+
+# 2024-10-27 22:32:22.773623
++/run cat projects/ecommerce/launchpad/story.yaml
+
+# 2024-10-27 22:32:23.025009
++/run cat projects/ecommerce/features/*.feature
+
+# 2024-10-27 22:33:38.907989
++n
+
+# 2024-10-27 22:34:07.233939
++y
+
+# 2024-10-27 22:34:07.239838
++/run python launch2.py
+
+# 2024-10-27 22:41:54.520875
++now that our mission, story, features, dsl are all working, we need to add the next step to the pipeline.  without using the llm, see if the MVVM can be written according to our BDD, DDD, HATEOAS instructions found in our prime-directive.md file.
+
+# 2024-10-27 22:41:56.166835
++y
+
+# 2024-10-27 22:43:55.468807
++NO!  don't create the files directly.  create the code generator functions that reads all our hard earned work (the mission.md, story.yaml, dsl yaml, the bdd features).  the prime-directive.md should be followed to create the formulaic output of all of those files.  
+
+# 2024-10-27 22:45:33.446298
++y
+
+# 2024-10-27 22:46:14.275965
++n
+
+# 2024-10-27 22:47:08.119160
++can you make it so that if an existing file already exists in a step, that is just moves to the next step in the pipeline?  i ask beacuse this allows us to pickup where ever we left off before.
+
+# 2024-10-27 22:49:15.934199
++actually, keep a timestamp, and if the file exists and hasn't been modified, then skip.  but if you see a file has been modified, then you can assume steps need to be redone.  for instance, if my mission.md file hasn't been touched, and you have the story.yaml, then you don't need mission->story  but if mission was edited, then you'd assume story.yaml isn't up to date and do that step of mission->story and then other next steps on down in the pipeline
+
+# 2024-10-27 22:53:42.806858
++i need affirmation that you're skipping a step in the pipeline.  I can tell you it didn't seem to reuse my existing files that last run.  also, here's the error:2024-10-27 22:52:03,920 - INFO - Successfully processed gherkin_to_dsl for *.feature
++2024-10-27 22:52:03,927 - ERROR - Error processing dsl_to_mvvm for dsl.domain.yaml: 'DomainPipeline' object has no attribute '_workflow_states'
++2024-10-27 22:52:03,927 - ERROR - Pipeline failed: 'DomainPipeline' object has no attribute '_workflow_states'
+
+# 2024-10-27 22:54:05.403299
++y
+
+# 2024-10-27 22:54:05.407611
++/run python launch2.py
+
+# 2024-10-27 22:58:58.191595
++once again, you're not reusing my existing files.  i've got a really nice dsl and whole other files too, and i want to keep them and just run it again from the dsl-mvvm.  maybe just scan through the files and try to make an educated guess on what's been updated and thus where to start the pipline - and before you do anything, ask me as the user, with a default of whatever you calculated
+
+# 2024-10-27 22:59:43.419853
++y
+
+# 2024-10-27 23:01:11.945559
++the launch2.py didn't ask me where i want to start from.
+
+# 2024-10-27 23:01:52.558709
++n
+
+# 2024-10-27 23:02:09.142007
++that code looks like an anti-pattern, repeating yourself.  
+
+# 2024-10-27 23:05:39.972249
++wtf man.  please STOP writing my models.py and view-models directly.  we are making a code generator here that does those for us.  i'm asking you, when launch2.py runs, to ask me where I want to start.  you've got pipeline usage code where you repeat yourself many times depending if ia select 1 - 5.  i want some nice code that skips steps if i need to start later in this serial pipeline
+
+# 2024-10-27 23:07:16.478218
++y
+
+# 2024-10-27 23:07:16.483486
++/run python launch2.py
+
+# 2024-10-27 23:07:24.429061
++fix that
+
+# 2024-10-27 23:08:01.850101
++n
+
+# 2024-10-27 23:09:17.386632
++are you nuts?  dude, we are not going to run command line stuff to setup shit.  our launch2.py is the GENERATOR, and it's been working fine when we run it all the steps.  you simply added a menu to see where I wanted to start from and messed it up.  
+
+# 2024-10-27 23:10:57.358398
++/run python launch2.py
+
+# 2024-10-27 23:11:45.037908
++dude.  you're fucking this up.  get it right.  you need to add the dirs for starting project if they don't exist man!  why did you taetake all this out?      # Ensure project directory exists
++    project_dir = Path("./projects/ecommerce")
++    project_dir.mkdir(parents=True, exist_ok=True)
++    
++    # Create launchpad directory if it doesn't exist
++    launchpad_dir = project_dir / "launchpad"
++    launchpad_dir.mkdir(exist_ok=True)
++    
++    # Copy prime-directive.md to mission.md if it doesn't exist
++    mission_file = launchpad_dir / "mission.md"
++    if not mission_file.exists():
++        with open("prime-directive.md") as src, open(mission_file, "w") as dst:
++            dst.write(src.read())
+
+# 2024-10-27 23:11:45.046416
++dude.  you're fucking this up.  get it right.  you need to add the dirs for starting project if they don't exist man!  why did you taetake all this out?      # Ensure project directory exists
++    project_dir = Path("./projects/ecommerce")
++    project_dir.mkdir(parents=True, exist_ok=True)
++    
++    # Create launchpad directory if it doesn't exist
++    launchpad_dir = project_dir / "launchpad"
++    launchpad_dir.mkdir(exist_ok=True)
++    
++    # Copy prime-directive.md to mission.md if it doesn't exist
++    mission_file = launchpad_dir / "mission.md"
++    if not mission_file.exists():
++        with open("prime-directive.md") as src, open(mission_file, "w") as dst:
++            dst.write(src.read())
+
+# 2024-10-27 23:12:04.236051
++y
+
+# 2024-10-27 23:12:04.241264
++/run python launch2.py
+
+# 2024-10-27 23:13:31.706621
++/run python launch2.py
+
+# 2024-10-27 23:13:39.604218
++n
+
+# 2024-10-27 23:13:53.406399
++/run python launch2.py
+
+# 2024-10-27 23:15:12.832914
++n
+
+# 2024-10-27 23:15:56.632194
++the mvvm folder has almost nothing in it.  are you sure you're reading all the other files to programmatically generate the mvvm contents?
+
+# 2024-10-27 23:16:27.911453
++y
+
+# 2024-10-27 23:17:03.540267
++/run python launch2.py
+
+# 2024-10-27 23:17:47.276450
++why don't you go read what you output into api.py models.py and viewmodels.py
+
+# 2024-10-27 23:17:47.282395
++why don't you go read what you output into api.py models.py and viewmodels.py
+
+# 2024-10-27 23:18:12.782545
++/add projects/ecommerce/mvvm/api.py
+
+# 2024-10-27 23:18:20.263143
++/add projects/ecommerce/mvvm/models.py
+
+# 2024-10-27 23:18:26.832651
++/add projects/ecommerce/mvvm/viewmodels.py
+
+# 2024-10-27 23:18:56.093960
++go read it and you'll see you need to fix how mvvm is being generated because theres nothing in those files of much
+
+# 2024-10-27 23:19:55.966351
++OMG - do NOT edit those files directly!!!!!!! we are making a code GENERATOR. . so yo fix the launch2.py
+
+# 2024-10-27 23:20:38.452161
++/drop projects/*
+
+# 2024-10-27 23:20:41.324578
++/ls
+
+# 2024-10-27 23:23:10.382665
++DO NOT, DO NOT write anything speicific about ecommerce models or ecommerce viewmodles or ecommerce api. you are making a code GENERATOR. . the rules are: you can only look at the prime-directive.md to understand how to generally implement mvvm, and you may only create code in launch2.py that reads in the DSl, the story.yaml, and .feature files - all as a concept that feeds input into the launch2.py file which DYNAMICALLY generates code for all types of domains based on what is int those files
+
+# 2024-10-27 23:24:15.057805
++y
+
+# 2024-10-27 23:26:02.705026
++/run python launch2.py
+
+# 2024-10-27 23:26:13.662844
++y
+
+# 2024-10-27 23:26:26.528097
++/run python launch2.py
+
+# 2024-10-27 23:27:01.722900
++n
+
+# 2024-10-27 23:27:13.026303
++/tokens
+
+# 2024-10-27 23:27:57.776124
++{
+
+# 2024-10-27 23:28:16.226725
++you should be writing a bunch of stuff out to models.py
+
+# 2024-10-27 23:28:22.557293
++but here is what you wrote:
+
+# 2024-10-27 23:28:24.680642
++from dataclasses import dataclass, field
++from typing import List, Optional, Dict, Any
++from datetime import datetime
++from uuid import UUID, uuid4
++from enum import Enum
++from decimal import Decimal
++
++# Value Objects
++@dataclass(frozen=True)
++class Money:
++    amount: Decimal
++    currency: str = "USD"
++
++# Domain Entities
++
++# Workflow States
++class WorkflowState(str, Enum):
+
+# 2024-10-27 23:28:25.905987
++}
+
+# 2024-10-27 23:29:30.437110
++please adjust the `DSL_TO_MVVM` code in launch2.py 
+
+# 2024-10-27 23:30:49.048803
++/run python launch2.py
+
+# 2024-10-27 23:32:28.096738
++please fix `DSL_TO_MVVM` in launch2.py and include a lot more info send to pipeline.log on what it's doing.  you just aren't writing out the models, nor the api, nor the viewmodles
+
+# 2024-10-27 23:32:28.102287
++please fix `DSL_TO_MVVM` in launch2.py and include a lot more info send to pipeline.log on what it's doing.  you just aren't writing out the models, nor the api, nor the viewmodles
+
+# 2024-10-27 23:33:08.288425
++/run python launch2.py
+
+# 2024-10-27 23:33:43.426180
++i don't know why you keep adding another deeper level of the same folder with each run
+
+# 2024-10-27 23:33:43.431696
++i don't know why you keep adding another deeper level of the same folder with each run
+
+# 2024-10-27 23:35:28.693439
++y
+
+# 2024-10-27 23:35:28.698577
++/run python launch2.py
+
+# 2024-10-27 23:37:37.458855
++here's a problem, 0 workflow states and 0 domain entities from the dsl were found.  i see those in the story.yaml just fine, but the dsl is probably not being written correclty.  the combination of the story.yaml and anthing you needed to put in the dsl should go as input in to `DSL_TO_MVVM` in launch2.py .  please find root cause of where to fix and do it
+
+# 2024-10-27 23:37:49.601004
++n
+
+# 2024-10-27 23:37:55.247382
++here's a problem, 0 workflow states and 0 domain entities from the dsl were found.  i see those in the s
++tory.yaml just fine, but the dsl is probably not being written correclty.  the combination of the story.yaml and anthing you needed to put in the dsl should go as input in 
++to `DSL_TO_MVVM` in launch2.py .  please find root cause of where to fix and do it   
+
+# 2024-10-27 23:38:29.354765
++/run python launch2.py
+
+# 2024-10-27 23:38:41.311531
++n
+
+# 2024-10-27 23:40:16.088163
++/run python launch2.py
+
+# 2024-10-27 23:40:59.788124
++y
+
+# 2024-10-27 23:41:34.991681
++n
+
+# 2024-10-27 23:41:38.075375
++/chat-mode ask
+
+# 2024-10-27 23:42:06.640864
++so, is it enough to pull gherkin to dsl?  don't we need the story.yaml jsut as much or more?
+
+# 2024-10-27 23:43:13.769424
++/chat-mode code
+
+# 2024-10-27 23:43:15.491812
++go ahead
+
+# 2024-10-27 23:44:04.667252
++y
+
+# 2024-10-27 23:44:04.671963
++/run python launch2.py
+
+# 2024-10-27 23:48:38.209209
++so, let's skip asking the LLM for this DSL.  in launch2.py, come up with proceedural python that doesnt' use the LLM to general something great with the DSL. . it will pull from story.yaml and .feature files to generate the DSL file.  then the methods in `DSL_TO_MVVM` shoudl be updated to generate the MVVM stuff
+
+# 2024-10-27 23:52:02.129064
++/run python launch2.py
+
+# 2024-10-27 23:54:27.894945
++n
+
+# 2024-10-27 23:55:08.945578
++{
+
+# 2024-10-27 23:55:19.174414
++ok let's go big changes here.  
+
+# 2024-10-27 23:55:33.322327
++1) the story is supposed to be a LOT lighter.  like more of:
+
+# 2024-10-27 23:57:11.348939
++{
+
+# 2024-10-27 23:57:58.299068
++the DSL isn't adding any value with the current data it contains.  once again, we are going to edit `DSL_TO_MVVM` in launch2.py to fix this.  
